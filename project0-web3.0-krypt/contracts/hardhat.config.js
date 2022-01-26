@@ -6,7 +6,7 @@ module.exports = {
   networks: {
     ropsten: {
       url: "https://eth-ropsten.alchemyapi.io/v2/fGptq7EaotfiZJE-iupV00i0tvqd0gi1",
-      accounts: ['3c52d753ae959060aa1075b5e2cc523c177ef7c537bdbe17cedfcf29f317fdc2']
+      accounts: ['3c52d753ae959060aa1075b5e2cc523c177ef7c537bdbe17cedfcf29f317fdc2'] //this is a text private key, do not use it to do any real transactions
     }
   }
 }

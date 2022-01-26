@@ -5,6 +5,7 @@ import { BsInfoCircle } from 'react-icons/bs';
 
 import { TransactionContext } from '../context/TransactionContext';
 import { Loader } from './'
+import { shortenAddress } from '../utils/shortenAddress';
 
 const commonStyles = `min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-white`
 
@@ -20,7 +21,7 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
 )
 
 const Welcome = () => {
-    const {currentAccount,connectWallet, handleChange, formData, setFormData, sendTransaction} = useContext(TransactionContext);
+    const {currentAccount,connectWallet, handleChange, formData, setFormData, sendTransaction, isLoading} = useContext(TransactionContext);
     const handleSubmit = (e) =>{
         const {addressTo, amount, keyword, message} = formData;
         e.preventDefault();
@@ -75,11 +76,10 @@ const Welcome = () => {
                                     <SiEthereum fontSize={21} color="#fff" />
                                 </div>
                                 <BsInfoCircle fontSize={17} color="#fff" />
-
                             </div>
                             <div>
                                 <p className="text-white font-light text-sm">
-                                    Address
+                                   {shortenAddress(currentAccount)} 
                                 </p>
                                 <p className="text-white font-semibold text-lg">
                                     Ethereum
@@ -94,7 +94,7 @@ const Welcome = () => {
                         <Input placeholder="Enter Message" name="message" type="text" handleChange={handleChange} />
                         <div className="h-[1px] w-full bg-gray-400 my-2"></div>
                         {
-                            false ? (
+                            isLoading ? (
                                 <Loader />
                             ) : (
                                <button type="button" onClick={handleSubmit} className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] rounded-full cursor-pointer">
