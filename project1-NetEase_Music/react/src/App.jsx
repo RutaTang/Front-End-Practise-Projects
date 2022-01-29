@@ -1,8 +1,11 @@
+import {Nav} from "./components"
+import {SlidablePages} from "./components"
 const App = () => {
 
   return (
     <div>
-      <h1 className="text-2xl">NetEase Music</h1>
+      <SlidablePages/>
+      <Nav/>
     </div>
   )
 }
